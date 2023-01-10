@@ -35,9 +35,11 @@
 .lessons-table {
   min-height: 360px;
   margin-top: 10px;
-  width: 400px;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
+  // override:
+  min-width: unset;
   tr:hover {
     background: whitesmoke;
     cursor: pointer;
