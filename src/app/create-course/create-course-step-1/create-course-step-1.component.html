@@ -1,4 +1,5 @@
 <div [formGroup]="form" class="course-details-form">
+  <!-- INPUT -->
   <mat-form-field floatLabel="auto">
     <mat-label>Course title</mat-label>
     <input matInput formControlName="title" #title />
@@ -6,5 +7,41 @@
     <mat-error *ngIf="courseTitle.errors?.minlength"
       >A minimum length of 5 characters is required</mat-error
     >
+  </mat-form-field>
+  <!-- RADIO -->
+  <!-- radio buttons do not require mat-form-field wrapper -->
+  <mat-radio-group class="course-type" formControlName="courseType">
+    <mat-radio-button [disabled]="true" value="free">Free</mat-radio-button>
+    <mat-radio-button value="premium">Premium</mat-radio-button>
+  </mat-radio-group>
+
+  <!-- SELECT -->
+  <mat-form-field appearance="outline">
+    <mat-select formControlName="category" placeholder="Select category">
+      <mat-option>None</mat-option>
+
+      <mat-optgroup label="Beginner">
+        <mat-option value="newprogramming">New to programming</mat-option>
+        <mat-option value="newjavascript">New to javascript</mat-option>
+        <mat-option value="newangular">New to angular</mat-option>
+      </mat-optgroup>
+
+      <mat-option value="intermediate">Intermediate</mat-option>
+      <mat-option value="advanced">Advanced</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- MULTIPLE SELECT -->
+  <mat-form-field appearance="outline">
+    <mat-select
+      formControlName="category"
+      placeholder="Select category"
+      multiple
+    >
+      <mat-option>None</mat-option>
+      <mat-option value="beginner">Beginner</mat-option>
+      <mat-option value="intermediate">Intermediate</mat-option>
+      <mat-option value="advanced">Advanced</mat-option>
+    </mat-select>
   </mat-form-field>
 </div>
