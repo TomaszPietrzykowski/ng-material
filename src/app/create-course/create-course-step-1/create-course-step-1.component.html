@@ -32,7 +32,7 @@
   </mat-form-field>
 
   <!-- MULTIPLE SELECT -->
-  <mat-form-field appearance="outline">
+  <!-- <mat-form-field appearance="outline">
     <mat-select
       formControlName="category"
       placeholder="Select category"
@@ -43,5 +43,20 @@
       <mat-option value="intermediate">Intermediate</mat-option>
       <mat-option value="advanced">Advanced</mat-option>
     </mat-select>
+  </mat-form-field> -->
+
+  <!-- DATE PICKER -->
+  <mat-form-field appearance="outline">
+    <input
+      matInput
+      formControlName="releasedAt"
+      placeholder="Release date"
+      [matDatepicker]="releasedAtPicker"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="releasedAtPicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #releasedAtPicker [dateClass]="dateClass"></mat-datepicker>
   </mat-form-field>
 </div>
