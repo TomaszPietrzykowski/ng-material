@@ -17,6 +17,7 @@ import {
   startWith,
   tap,
   catchError,
+  finalize,
   delay,
 } from "rxjs/operators";
 import { merge, fromEvent, throwError } from "rxjs";
@@ -32,6 +33,8 @@ export class CourseComponent implements OnInit, AfterViewInit {
 
   lessons: Lesson[] = [];
 
+  loading = false;
+
   constructor(
     private route: ActivatedRoute,
     private coursesService: CoursesService
@@ -46,6 +49,7 @@ export class CourseComponent implements OnInit, AfterViewInit {
   }
 
   loadLessonsPage() {
+    this.loading = true;
     this.coursesService
       .findLessons(this.course.id, "asc", 0, 3)
       .pipe(
@@ -54,7 +58,8 @@ export class CourseComponent implements OnInit, AfterViewInit {
           console.log("Error loading lessons:", err);
           alert("Error loading lessons");
           return throwError(err);
-        })
+        }),
+        finalize(() => (this.loading = false))
       )
       .subscribe();
   }
