@@ -59,4 +59,27 @@
     ></mat-datepicker-toggle>
     <mat-datepicker #releasedAtPicker [dateClass]="dateClass"></mat-datepicker>
   </mat-form-field>
+
+  <!-- CHECKBOX -->
+  <!-- checkbox does not require mat-form-field wrapper -->
+  <mat-checkbox
+    color="primary"
+    formControlName="downloadsAllowed"
+    [indeterminate]="true"
+  >
+    Downloads allowed?</mat-checkbox
+  >
+  <mat-checkbox [disabled]="true"> Disabled</mat-checkbox>
+
+  <!-- TEXTAREA -->
+  <mat-form-field appearance="outline">
+    <textarea
+      matInput
+      placeholder="Description"
+      formControlName="longDescription"
+      cdkTextareaAutosize
+      [cdkAutosizeMinRows]="8"
+      [cdkAutosizeMaxRows]="10"
+    ></textarea>
+  </mat-form-field>
 </div>

@@ -2,6 +2,9 @@ import { Component } from "@angular/core";
 import { UntypedFormBuilder, Validators } from "@angular/forms";
 import { MatCalendarCellClassFunction } from "@angular/material/datepicker";
 
+const SAMPLE_TEXT =
+  "Reacting to China's latest visa restrictions, South Korea's foreign ministry told the BBC that its policy towards arrivals from China was in accordance with scientific and objective evidence.";
+
 @Component({
   selector: "create-course-step-1",
   templateUrl: "create-course-step-1.component.html",
@@ -17,7 +20,10 @@ export class CreateCourseStep1Component {
     category: ["BEGINNER", Validators.required],
     courseType: ["premium", Validators.required],
     downloadsAllowed: [false, Validators.requiredTrue],
-    longDescription: ["", [Validators.required, Validators.minLength(3)]],
+    longDescription: [
+      SAMPLE_TEXT,
+      [Validators.required, Validators.minLength(3)],
+    ],
   });
 
   constructor(private fb: UntypedFormBuilder) {}
